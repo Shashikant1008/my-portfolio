@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shashikant's cybersecurity and security research portfolio">
+  <title>Shashikant | Cybersecurity Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    :root {
+      --bg: #080d1c;
+      --text: #edf3ff;
+      --muted: #a5b2ca;
+      --cyan: #65e7f2;
+      --violet: #a78bfa;
+      --green: #82f0bf;
+      --glass: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.13);
+      --radius: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 15% 10%, rgba(72,104,220,.2), transparent 35%),
+        radial-gradient(ellipse at 85% 28%, rgba(137,83,214,.15), transparent 30%),
+        #080d1c;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, var(--cyan), #9bb8ff, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section {
+      padding: 65px 0;
+    }
+
+    .section-kicker {
+      color: var(--cyan);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font: 700 clamp(1.9rem, 4vw, 2.7rem)/1.2 "Space Grotesk", sans-serif;
+      letter-spacing: -.04em;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav-wrap {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      padding-top: 10px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 19px;
+      border-radius: 18px;
+      background: rgba(10,16,32,.82);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(22px);
+    }
+
+    .logo {
+      font: 700 1.35rem "Space Grotesk", sans-serif;
+      letter-spacing: -.05em;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .88rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-button {
+      border: 1px solid rgba(101,231,242,.4);
+      color: var(--cyan);
+      border-radius: 12px;
+      padding: 8px 13px;
+      white-space: nowrap;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 13px;
+      font-weight: 700;
+      font-size: .9rem;
+      border: 1px solid var(--border);
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: #07121c;
+      background: linear-gradient(100deg, var(--cyan), #a8f3f4);
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background: var(--glass);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 620px;
+      padding: 90px 0 75px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 25px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .hero h1 {
+      font: 700 clamp(2.8rem, 6vw, 5.2rem)/1.06 "Space Grotesk", sans-serif;
+      letter-spacing: -.065em;
+      margin: 20px 0;
+    }
+
+    .hero-description {
+      max-width: 630px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .pill, .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: #c5d0e5;
+      font-size: .78rem;
+    }
+
+    /* ===== PROFILE CARD ===== */
+    .profile-card {
+      border-radius: 28px;
+      padding: 27px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+      border-radius: 21px;
+      background: linear-gradient(135deg, rgba(101,231,242,.25), rgba(167,139,250,.25));
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--cyan);
+      font: 700 2rem "Space Grotesk", sans-serif;
+    }
+
+    .profile-top h2 {
+      font: 600 1.35rem "Space Grotesk", sans-serif;
+    }
+
+    .profile-top p {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      background: rgba(130,240,191,.07);
+      border: 1px solid rgba(130,240,191,.23);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: .8rem;
+      margin-bottom: 20px;
+    }
+
+    .status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--cyan);
+      font: 700 1.4rem "Space Grotesk", sans-serif;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+    }
+
+    .panel {
+      padding: 27px;
+      border-radius: var(--radius);
+    }
+
+    .panel h3 {
+      font: 600 1.25rem "Space Grotesk", sans-serif;
+      margin-bottom: 14px;
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .focus-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #dbe6fa;
+    }
+
+    .icon-box {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border: 1px solid rgba(101,231,242,.2);
+      background: rgba(101,231,242,.08);
+      border-radius: 12px;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* ===== PROJECTS ===== */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      border-radius: var(--radius);
+      padding: 27px;
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(101,231,242,.4);
+      background: rgba(255,255,255,.075);
+    }
+
+    .project-number {
+      color: var(--cyan);
+      font: 700 .8rem "Space Grotesk", sans-serif;
+      letter-spacing: .12em;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      margin: 18px 0;
+      border-radius: 15px;
+      color: var(--cyan);
+      font-size: 1.5rem;
+      background: rgba(101,231,242,.08);
+      border: 1px solid rgba(101,231,242,.23);
+    }
+
+    .project-card h3 {
+      font: 600 1.4rem "Space Grotesk", sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+    }
+
+    /* ===== EXPERIENCE & EDUCATION ===== */
+    .timeline {
+      display: grid;
+      gap: 17px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 17px;
+      padding: 23px;
+      border-radius: var(--radius);
+    }
+
+    .timeline-mark {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 14px;
+      color: var(--violet);
+      background: rgba(167,139,250,.1);
+      border: 1px solid rgba(167,139,250,.23);
+      font-weight: 700;
+    }
+
+    .timeline-item h3 {
+      font: 600 1.1rem "Space Grotesk", sans-serif;
+      margin-bottom: 5px;
+    }
+
+    .timeline-date {
+      color: var(--cyan);
+      font-size: .82rem;
+      margin-bottom: 9px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .skill-card {
+      padding: 22px;
+      border-radius: 18px;
+    }
+
+    .skill-card h3 {
+      font: 600 1rem "Space Grotesk", sans-serif;
+      margin-bottom: 14px;
+    }
+
+    /* ===== CERTIFICATION & PATENT ===== */
+    .credential-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .credential {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 25px;
+      border-radius: var(--radius);
+    }
+
+    .credential .icon-box {
+      width: 46px;
+      height: 46px;
+    }
+
+    .credential h3 {
+      font: 600 1.08rem "Space Grotesk", sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .credential p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: clamp(27px, 5vw, 48px);
+      border-radius: 28px;
+      background:
+        linear-gradient(120deg, rgba(101,231,242,.09), rgba(167,139,250,.09)),
+        var(--glass);
+    }
+
+    .contact-panel h2 {
+      font: 700 clamp(1.9rem, 4vw, 2.8rem)/1.2 "Space Grotesk", sans-serif;
+      letter-spacing: -.045em;
+      margin-bottom: 12px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 30px 0 38px;
+      color: #7f8ca7;
+      font-size: .82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 65px;
+      }
+
+      .profile-card {
+        max-width: 520px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      nav {
+        flex-wrap: wrap;
+        padding: 13px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 9px;
+      }
+
+      .nav-links a {
+        font-size: .77rem;
+      }
+
+      .nav-button {
+        margin-left: auto;
+        font-size: .8rem;
+      }
+
+      .hero {
+        padding: 55px 0 35px;
+        gap: 25px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 12vw, 4rem);
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .project-grid,
+      .credential-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel,
+      .project-card {
+        padding: 21px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .timeline-mark {
+        width: 39px;
+        height: 39px;
+      }
+
+      .profile-card {
+        padding: 21px;
+      }
+
+      .footer-inner {
+        display: block;
+      }
+
+      .footer-links {
+        margin-top: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <div class="nav-wrap container">
+    <nav aria-label="Main navigation">
+      <a class="logo" href="#home">shashi<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+      </div>
+
+      <a class="nav-button" href="#contact">Let's connect ↗</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <header class="hero container" id="home">
+      <div>
+        <div class="eyebrow">Cybersecurity · Research · Innovation</div>
+
+        <h1>
+          Curious mind.<br>
+          <span class="gradient-text">Security-first</span><br>
+          problem solver.
+        </h1>
+
+        <p class="hero-description">
+          I'm Shashikant, a Computer Science Engineering student at GNA
+          University. I'm interested in cybersecurity, security research,
+          threat analysis, data protection, and building practical solutions
+          through research and experimentation.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#projects">
+            Explore my work ↘
+          </a>
+
+          <a class="btn btn-secondary" href="mailto:shashikaant50@gmail.com">
+            Email me ↗
+          </a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">ISC2 Certified in Cybersecurity</span>
+          <span class="pill">B.Tech CSE</span>
+          <span class="pill">Research-oriented</span>
+        </div>
+      </div>
+
+      <aside class="profile-card glass">
+        <div class="profile-top">
+          <div class="avatar">S</div>
+
+          <div>
+            <h2>Shashikant</h2>
+            <p>Cybersecurity learner & innovator</p>
+          </div>
+        </div>
+
+        <div class="status">Open to learning and collaboration</div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>01</strong>
+            <span>Security certification</span>
+          </div>
+
+          <div class="stat">
+            <strong>02</strong>
+            <span>Featured projects</span>
+          </div>
+
+          <div class="stat">
+            <strong>01</strong>
+            <span>Patent application</span>
+          </div>
+
+          <div class="stat">
+            <strong>03</strong>
+            <span>Languages spoken</span>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-kicker">01 / About me</div>
+        <h2 class="section-title">Learning by investigating.</h2>
+        <p class="section-description">
+          Building a strong foundation in security, then applying it to
+          real-world problems.
+        </p>
+
+        <div class="about-grid">
+          <article class="panel glass">
+            <h3>My approach</h3>
+
+            <p>
+              I am a B.Tech Computer Science Engineering student with a strong
+              interest in cybersecurity, security research, and practical
+              innovation. I enjoy analytical problem-solving, exploring how
+              systems behave, and turning ideas into structured projects.
+              I aim to grow under experienced professionals and contribute
+              through project work, security training, and research-based
+              learning.
+            </p>
+          </article>
+
+          <article class="panel glass">
+            <h3>Areas I'm exploring</h3>
+
+            <div class="focus-list">
+              <div class="focus-item">
+                <span class="icon-box">⌘</span>
+                Web and application security
+              </div>
+
+              <div class="focus-item">
+                <span class="icon-box">⌁</span>
+                Network monitoring and threat analysis
+              </div>
+
+              <div class="focus-item">
+                <span class="icon-box">◇</span>
+                Malware defense and reverse engineering
+              </div>
+
+              <div class="focus-item">
+                <span class="icon-box">⬡</span>
+                Data protection and blockchain concepts
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-kicker">02 / Selected work</div>
+        <h2 class="section-title">Projects with a purpose.</h2>
+        <p class="section-description">
+          Projects focused on secure data handling, traceability, and safety.
+        </p>
+
+        <div class="project-grid">
+
+          <article class="project-card glass">
+            <div class="project-number">PROJECT / 01</div>
+            <div class="project-icon">⛓</div>
+
+            <h3>Raksha Chain</h3>
+
+            <p>
+              A blockchain-based project focused on secure storage and
+              management of scam-related data. It explores protection,
+              traceability, and structured data handling using blockchain
+              principles.
+            </p>
+
+            <div class="tag-row">
+              <span class="tag">Blockchain</span>
+              <span class="tag">Data protection</span>
+              <span class="tag">Traceability</span>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-number">PROJECT / 02</div>
+            <div class="project-icon">🛡</div>
+
+            <h3>Campus Guardian App</h3>
+
+            <p>
+              A mobile application prototype for campus security and
+              monitoring, with core features including user authentication,
+              incident reporting, and role-based access.
+            </p>
+
+            <div class="tag-row">
+              <span class="tag">Authentication</span>
+              <span class="tag">Access control</span>
+              <span class="tag">Campus safety</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE AND EDUCATION -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-kicker">03 / Experience & education</div>
+        <h2 class="section-title">Building the foundation.</h2>
+        <p class="section-description">
+          My academic background and practical cybersecurity training.
+        </p>
+
+        <div class="timeline">
+
+          <article class="timeline-item glass">
+            <div class="timeline-mark">01</div>
+
+            <div>
+              <h3>Cyber Security Trainee · GNA University</h3>
+
+              <div class="timeline-date">
+                July 2025 – August 2025 · 45-day in-house training
+              </div>
+
+              <p>
+                Gained foundational exposure to cybersecurity concepts,
+                practical analysis techniques, network monitoring, web
+                security testing, and basic reverse engineering. Worked
+                with Burp Suite, Wireshark, and Ghidra.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item glass">
+            <div class="timeline-mark">02</div>
+
+            <div>
+              <h3>B.Tech · Computer Science Engineering</h3>
+
+              <div class="timeline-date">
+                GNA University, Punjab · August 2023 – Present
+              </div>
+
+              <p>
+                Current CGPA listed on my resume: 7.05. Developing core
+                computing knowledge and practical cybersecurity skills.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item glass">
+            <div class="timeline-mark">03</div>
+
+            <div>
+              <h3>Higher Secondary (12th)</h3>
+
+              <div class="timeline-date">
+                Maharaja Ranjit Singh Police Public School,
+                Phillaur, Punjab
+              </div>
+
+              <p>
+                Completed Higher Secondary education with 76.5%.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-kicker">04 / Technical toolkit</div>
+        <h2 class="section-title">Tools, skills & interests.</h2>
+        <p class="section-description">
+          A growing toolkit for investigation, analysis, and secure system
+          design.
+        </p>
+
+        <div class="skills-grid">
+
+          <article class="skill-card glass">
+            <h3>Programming languages</h3>
+            <div class="tag-row">
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Python</span>
+              <span class="tag">Bash</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass">
+            <h3>Cybersecurity tools</h3>
+            <div class="tag-row">
+              <span class="tag">Burp Suite</span>
+              <span class="tag">Wireshark</span>
+              <span class="tag">Ghidra</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass">
+            <h3>Core interests</h3>
+            <div class="tag-row">
+              <span class="tag">Threat analysis</span>
+              <span class="tag">Malware defense</span>
+              <span class="tag">Data protection</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass">
+            <h3>Security concepts</h3>
+            <div class="tag-row">
+              <span class="tag">Blockchain</span>
+              <span class="tag">Network security</span>
+              <span class="tag">Risk management</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass">
+            <h3>Professional strengths</h3>
+            <div class="tag-row">
+              <span class="tag">Analytical thinking</span>
+              <span class="tag">Problem solving</span>
+              <span class="tag">Adaptability</span>
+            </div>
+          </article>
+
+          <article class="skill-card glass">
+            <h3>Research mindset</h3>
+            <div class="tag-row">
+              <span class="tag">Curiosity</span>
+              <span class="tag">Investigation</span>
+              <span class="tag">Continuous learning</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATION AND PATENT -->
+    <section class="section" id="credentials">
+      <div class="container">
+        <div class="section-kicker">05 / Credentials & innovation</div>
+        <h2 class="section-title">Learning meets invention.</h2>
+        <p class="section-description">
+          A professional cybersecurity credential and an innovation-focused
+          patent application.
+        </p>
+
+        <div class="credential-grid">
+
+          <article class="credential glass">
+            <div class="icon-box">✓</div>
+
+            <div>
+              <h3>ISC2 Certified in Cybersecurity (CC)</h3>
+
+              <p>
+                Certification date listed on resume: 17 January 2026.
+                Covers foundational cybersecurity principles, risk
+                management, threat analysis, and security best practices.
+              </p>
+            </div>
+          </article>
+
+          <article class="credential glass">
+            <div class="icon-box">✦</div>
+
+            <div>
+              <h3>Fuel Adulteration Detection & Flow Control Device</h3>
+
+              <p>
+                Patent application ID: 202611004217. The device is designed
+                to detect fuel quality in real time, control dispensing,
+                and securely record data.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel glass">
+
+          <div>
+            <div class="section-kicker">06 / Contact</div>
+
+            <h2>
+              Let's build something<br>
+              <span class="gradient-text">meaningful and secure.</span>
+            </h2>
+
+            <p>
+              I'm interested in cybersecurity opportunities, practical
+              projects, research collaboration, and connecting with people
+              who build useful security solutions.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary"
+               href="mailto:shashikaant50@gmail.com">
+              ✉ Email me
+            </a>
+
+            <a class="btn btn-secondary"
+               href="https://www.linkedin.com/in/shashikant-65a056297"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+
+            <a class="btn btn-secondary"
+               href="https://github.com/Shashikant1008"
+               target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <p>
+        © 2026 Shashikant. Designed with curiosity and a security-first mindset.
+      </p>
+
+      <div class="footer-links">
+        <a href="mailto:shashikaant50@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/shashikant-65a056297"
+           target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/Shashikant1008"
+           target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
